@@ -9,8 +9,15 @@
 
 <ion-content padding>
 
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let foto of carro.fotos">
+      <img src="{{ foto }}">
+    </ion-slide>
+  </ion-slides>
+
   <ion-item-group>
     <ion-item-divider color="light">
+      <ion-icon name="car"></ion-icon>
       VEÍCULO
     </ion-item-divider>
     <ion-item>{{ carro.nome }}</ion-item>
@@ -18,7 +25,10 @@
   </ion-item-group>
 
   <ion-item-group>
-      <ion-item-divider color="light">Acessórios</ion-item-divider>
+      <ion-item-divider color="light">
+        <ion-icon name="options"></ion-icon>
+        Acessórios
+      </ion-item-divider>
       <ion-item>Acessório 1</ion-item>
       <ion-item>Acessório 2</ion-item>
       <ion-item>Acessório 3</ion-item>
@@ -28,6 +38,10 @@
     <span item-right> TOTAL: R$ 100,00</span>
   </ion-item-divider>
       
-  <button ion-button block>Avançar</button>
+  <ion-fab top right edge>
+    <button ion-fab >
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </button>
+  </ion-fab>
 
 </ion-content>
