@@ -1,0 +1,13 @@
+0000000000000000000000000000000000000000 bc65d35823483ac3bbe9822ff54e4eb1ad81932f luan <luan.silva@caelum.com.br> 1510005421 -0200	commit (initial): Initial commit
+bc65d35823483ac3bbe9822ff54e4eb1ad81932f 41a413e537f9655edd5125c9455bf1de96673666 Micael Souza <micael.souza@soledadetecnologia.com.br> 1534712057 -0300	commit: exemplo 1
+41a413e537f9655edd5125c9455bf1de96673666 a359eaa5b941f7abeaebb47986181b0ed5df0d86 Micael Souza <micael.souza@soledadetecnologia.com.br> 1534713053 -0300	commit: Listagem apartir do construtor
+a359eaa5b941f7abeaebb47986181b0ed5df0d86 844bb97c80e19bb34c144f73f4520bddfba46f71 Micael Souza <micael.souza@soledadetecnologia.com.br> 1534713701 -0300	commit: add modelo Carro definido como Interface
+844bb97c80e19bb34c144f73f4520bddfba46f71 865a401099e611ca7b3a20c64de031d5fb165668 Micael Souza <micael.souza@soledadetecnologia.com.br> 1534725656 -0300	commit: 02
+865a401099e611ca7b3a20c64de031d5fb165668 844bb97c80e19bb34c144f73f4520bddfba46f71 Micael Souza <micael.souza@soledadetecnologia.com.br> 1534725704 -0300	reset: moving to HEAD~1
+844bb97c80e19bb34c144f73f4520bddfba46f71 93f1ae01b20f4a0990f37a7460313a525df5330e Micael Souza <micael.souza@soledadetecnologia.com.br> 1534725771 -0300	commit: implementado 02-Requisições com o serviço HttpClient
+93f1ae01b20f4a0990f37a7460313a525df5330e 06c8f531744fc6d03c2a5840053534038bee39df Micael Souza <micael.souza@soledadetecnologia.com.br> 1534725887 -0300	commit: implementado 02-Requisições com o serviço HttpClient- 2
+06c8f531744fc6d03c2a5840053534038bee39df fd0fe9a57b081ad0d1dcada3096a9f84ba00ea36 Micael Souza <micael.souza@soledadetecnologia.com.br> 1534726700 -0300	commit: loading: 04 -Adicionando aviso de carregamento de carros
+fd0fe9a57b081ad0d1dcada3096a9f84ba00ea36 3aa8f152c2fb14f6263a519d57e621ad14fde22a Micael Souza <micael.souza@soledadetecnologia.com.br> 1534728435 -0300	commit: criando um alert: 06 - Adicionando alerta de falha no carregamento dos carros
+3aa8f152c2fb14f6263a519d57e621ad14fde22a 7ce3224b683061225baeabbc5ad7153e4614e0dd Micael Souza <micael.souza@soledadetecnologia.com.br> 1534729883 -0300	commit: criando Provider: 08-Isolando o acesso à API de carros
+7ce3224b683061225baeabbc5ad7153e4614e0dd 6de2e02f2c2e5c7ae92430654385a6121caf76a4 Micael Souza <micael.souza@soledadetecnologia.com.br> 1534731994 -0300	commit: implementando oionViewDidLoad(): 09-Ciclo de vida do Ionic
+6de2e02f2c2e5c7ae92430654385a6121caf76a4 59c313fb1d636a8d6fcfa2b3c5a11813ae052053 Micael Souza <micael.souza@soledadetecnologia.com.br> 1534733069 -0300	commit: projeto depentende- webservice
