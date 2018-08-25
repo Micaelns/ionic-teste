@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Carro } from '../../app/modelos/carro';
 import { Acessorio } from '../../app/modelos/acessorio';
-import { CadastroPage } from "../cadastro/CadastroPage";
+import { CadastroPage } from "../cadastro/cadastro";
 
 @IonicPage()
 @Component({
