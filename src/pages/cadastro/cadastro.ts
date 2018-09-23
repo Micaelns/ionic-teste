@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, Alert } from 'ion
 import { Carro } from '../../app/modelos/carro';
 import { AgendamentosServiceProvider } from '../../providers/agendamentos-service/agendamentos-service';
 import { HomePage } from '../home/home';
+import { Agendamento } from '../../app/modelos/agendamento';
 
 @IonicPage()
 @Component({
@@ -32,7 +33,21 @@ export class CadastroPage {
 
   agenda(){
 
-    let agendamento={
+    if(!this.nome || !this.endereco || !this.email){
+      this._alertCtrl.create({
+        title: 'Preencimento Obrigatório',
+        subTitle: 'Preencha todos do campos!',
+        buttons:[
+          {
+            text:'ok'
+          }
+        ]
+      }).present();
+
+      return;
+    }
+
+    let agendamento: Agendamento = {
       nomeCliente: this.nome,
       enderecoCliente: this.endereco,
       emailCliente: this.email,
@@ -43,7 +58,7 @@ export class CadastroPage {
       title: 'Aviso',
       buttons:[
         {
-          text:'OK',
+          text:'ok',
           handler: ()=>{
             this.navCtrl.setRoot(HomePage);
           }
@@ -51,16 +66,23 @@ export class CadastroPage {
       ]
     })
 
-   this._agendamentosService.agenda(agendamento)
-    .subscribe(
-      ()=>{
-        this._alerta.setSubTitle('Agendamento realizado');
-        this._alerta.present();
-      },
-      ()=>{
-        this._alerta.setSubTitle('Falha do Agendamento! Tente novamente mais tarde');
-        this._alerta.present();
-      },
-    );
+    let mensagem='';
+
+    this._agendamentosService.agenda(agendamento)
+      //o metodo finally() não vem habilitado no rxjs, necessário habilitar em app.modules
+      .finally(
+        ()=>{
+          this._alerta.setSubTitle(mensagem);
+          this._alerta.present();
+        }
+      )
+      .subscribe(
+        ()=>{
+          mensagem='Agendamento realizado';
+        },
+        ()=>{
+          mensagem='Falha do Agendamento! Tente novamente mais tarde';
+        },
+      );
   }
 }

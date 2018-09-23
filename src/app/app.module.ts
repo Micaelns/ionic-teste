@@ -10,6 +10,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CarrosServiceProvider } from '../providers/carros-service/carros-service';
 import { AgendamentosServiceProvider } from '../providers/agendamentos-service/agendamentos-service';
 
+import { IoncStorageModule} from '@ionic/storage';
+
+//para poder usar o finally em qualquer lugar da aplicação
+import 'rxjs/add/operator/finally';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -18,7 +23,12 @@ import { AgendamentosServiceProvider } from '../providers/agendamentos-service/a
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IoncStorageModule.forRoot({
+      name:'aluracar',
+      storageName: 'agendamentos',
+      driverOrder: ['indexeddb']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
