@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Carro } from '../../app/modelos/carro';
+import { AgendamentosServiceProvider } from '../../providers/agendamentos-service/agendamentos-service';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,8 @@ export class CadastroPage {
     
 
   constructor(public navCtrl: NavController, 
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    private _agendamentosService: AgendamentosServiceProvider) {
         this.carro = this.navParams.get('carroSelecionado');
         this.precoTotal = this.navParams.get('precoTotal');
   }
@@ -29,5 +31,19 @@ export class CadastroPage {
     console.log(this.endereco);
     console.log(this.email);
     console.log(this.data);
+
+    let agendamento={
+      nomeCliente: this.nome,
+      enderecoCliente: this.endereco,
+      emailCliente: this.email,
+      modeloCarro: this.carro.nome,
+      precoTotal: this.precoTotal
+    };
+
+   this._agendamentosService.agenda(agendamento)
+    .subscribe(
+      ()=>alert('Agendou!'),
+      ()=>alert('Deu problema')
+    );
   }
 }

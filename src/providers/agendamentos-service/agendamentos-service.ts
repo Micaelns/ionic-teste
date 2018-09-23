@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class AgendamentosServiceProvider {
 
-  private _url='http://localhosts:8080/api';
+  private _url='http://localhost:8080/api';
 
   constructor(private _http: HttpClient) {
   }
