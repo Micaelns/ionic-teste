@@ -5,6 +5,8 @@ import { AgendamentosServiceProvider } from '../../providers/agendamentos-servic
 import { HomePage } from '../home/home';
 import { Agendamento } from '../../app/modelos/agendamento';
 
+import { AgendamentoDaoProvider } from '../../providers/agendamento-dao/agendamento-dao';
+
 @IonicPage()
 @Component({
   selector: 'page-cadastro',
@@ -26,7 +28,8 @@ export class CadastroPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private _alertCtrl: AlertController,
-    private _agendamentosService: AgendamentosServiceProvider) {
+    private _agendamentosService: AgendamentosServiceProvider,
+    private _agendamentoDao: AgendamentoDaoProvider) {
         this.carro = this.navParams.get('carroSelecionado');
         this.precoTotal = this.navParams.get('precoTotal');
   }
@@ -52,7 +55,10 @@ export class CadastroPage {
       enderecoCliente: this.endereco,
       emailCliente: this.email,
       modeloCarro: this.carro.nome,
-      precoTotal: this.precoTotal
+      precoTotal: this.precoTotal,
+      confirmado: false,
+      enviado:false,
+      data: this.data
     };
     this._alerta = this._alertCtrl.create({
       title: 'Aviso',
@@ -68,8 +74,17 @@ export class CadastroPage {
 
     let mensagem='';
 
+    //o metodo finally() não vem habilitado no rxjs, necessário habilitar em app.modules
     this._agendamentosService.agenda(agendamento)
-      //o metodo finally() não vem habilitado no rxjs, necessário habilitar em app.modules
+      .mergeMap(
+          (valor)=>{
+            let observable=this._agendamentoDao.salva(agendamento)
+            if(valor instanceof Error){
+              throw valor;
+            }
+            return observable;
+          }
+        )
       .finally(
         ()=>{
           this._alerta.setSubTitle(mensagem);
@@ -77,12 +92,10 @@ export class CadastroPage {
         }
       )
       .subscribe(
-        ()=>{
-          mensagem='Agendamento realizado';
-        },
-        ()=>{
-          mensagem='Falha do Agendamento! Tente novamente mais tarde';
-        },
+        ()=>mensagem='Agendamento realizado',
+        (err: Error)=>mensagem=err.message,
       );
   }
+
+  
 }
