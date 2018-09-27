@@ -75,7 +75,13 @@ export class CadastroPage {
     let mensagem='';
 
     //o metodo finally() não vem habilitado no rxjs, necessário habilitar em app.modules
-    this._agendamentosService.agenda(agendamento)
+    this._agendamentoDao.ehDuplicado(agendamento)
+      .mergeMap(ehDuplicado =>{
+          if(ehDuplicado){
+            throw new Error('Agendamento existente!');
+          } 
+          return this._agendamentosService.agenda(agendamento)
+      }) 
       .mergeMap(
           (valor)=>{
             let observable=this._agendamentoDao.salva(agendamento)
